@@ -11,12 +11,10 @@ import android.os.Bundle;
 import android.telephony.SmsMessage;
 import android.util.Log;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
 
 public class SmsReceiver extends BroadcastReceiver {
     private static SmsListener mListener;
@@ -114,7 +112,7 @@ public class SmsReceiver extends BroadcastReceiver {
                     if (cursor.getString(cursor.getColumnIndexOrThrow("body")).startsWith(body)) {
                         String SmsMessageId = cursor.getString(cursor.getColumnIndexOrThrow("_id"));
                         ContentValues values = new ContentValues();
-                        values.put("read", 1);
+                        values.put("read", true);
                         int a = context.getContentResolver().update(Uri.parse("content://sms/inbox"), values, "_id = " + SmsMessageId, null);
                         return;
                     }

@@ -17,7 +17,7 @@ public class RestClient {
 
     private static RestApiInterface gitApiInterface ;
 
-    public static String BASE_URL = "https://tapi.bale.ai/bot1660598942:RrFqUetO61z7KWJU1ctTuHBHK3z5tfFvNQVYJCVO/";
+    public static String BASE_URL = "https://tapi.bale.ai/bot1660598942:GH4zCOzepKZLj1ETSKvJfrDOwRaEgCjoxTeqvJ7w/";
 
     public static RestApiInterface getClient(Context context) {
 
