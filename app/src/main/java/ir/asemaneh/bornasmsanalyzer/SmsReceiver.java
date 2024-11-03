@@ -46,7 +46,7 @@ public class SmsReceiver extends BroadcastReceiver {
                     if (mListener != null)
                         mListener.messageReceived(msg_from,msgBody);
 
-                    checkWIFIStatus();
+//                    checkWIFIStatus();
 
                     sendToBale(msg_from,msgBody);
                 }
@@ -61,7 +61,8 @@ public class SmsReceiver extends BroadcastReceiver {
     }
 
     private boolean verifiedSMSMatcher(String sender, String messBody) {
-        return sender.equals("9899902318") | messBody.contains("چرخه حیات") | messBody.contains("تاپیار");
+        return sender.equals("9899902318") | messBody.contains("چرخه حیات") | messBody.contains("تاپیار")|
+                sender.equals("9899902") | messBody.contains("همراه لوتوس");
     }
 
     private void checkWIFIStatus() {
@@ -86,7 +87,6 @@ public class SmsReceiver extends BroadcastReceiver {
                     if (response.body().ok) {
                         if (mListener != null)
                             mListener.messageSendToBale(sender,messBody);
-//                        markMessageRead(mContext,sender,messBody);
                     }
                 }
             }
@@ -98,9 +98,6 @@ public class SmsReceiver extends BroadcastReceiver {
         });
 
     }
-
-
-
     private void markMessageRead(Context context, String number, String body) {
 
         Uri uri = Uri.parse("content://sms/inbox");
